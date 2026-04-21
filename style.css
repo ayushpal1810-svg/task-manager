@@ -1,0 +1,27 @@
+
+
+.dashboard{
+    display: flex;
+    gap: 50px;
+    height: 10vh;
+    
+    justify-content: center;
+    background-color: blueviolet;
+}
+.main{
+    display: flex;
+    height: 80vh;
+    
+    /* background-color: rgb(188, 137, 236); */
+
+}
+.left{
+    
+    height: 80vh;
+    width: 20vw;
+}
+.right{
+    
+    height: 80vh;
+    width: 80vw;
+}
