@@ -25,3 +25,11 @@
     height: 80vh;
     width: 80vw;
 }
+.completed {
+    color: green;
+    text-decoration: line-through;
+}
+.task_list div {
+    border-bottom: 1px solid #ccc;
+    padding: 8px 0;
+}

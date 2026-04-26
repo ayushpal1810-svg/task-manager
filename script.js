@@ -5,7 +5,7 @@ const add_task_container = document.getElementsByClassName("task_list")[0];
 const adda=document.getElementById("add")
 document.getElementsByClassName("date")[0].textContent = today_formatted_date;
 adda.addEventListener("click",function () {
-   
+
    //creating input box on click
     const input=document.createElement("input")
     input.type="text";
@@ -23,6 +23,21 @@ adda.addEventListener("click",function () {
             if(text=="") return
             const task=document.createElement("div")
             task.textContent=text;
+                const btn=document.createElement("button")
+                btn.textContent = "completed";
+
+                btn.addEventListener("click" , function () {
+                    task.classList.toggle("completed");
+                    if(task.classList.contains("completed")){
+                        btn.textContent="incomplete";
+                        add_task_container.appendChild(task)
+                    }
+                    else{
+                        btn.textContent="completed";
+                        add_task_container.prepend(task)
+                    }
+                });
+                task.appendChild(btn);
             add_task_container.prepend(task);
             input_box.innerHTML="";
         }
