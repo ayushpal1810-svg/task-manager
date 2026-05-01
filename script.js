@@ -22,9 +22,15 @@ adda.addEventListener("click",function () {
             const text=input.value.trim();
             if(text=="") return
             const task=document.createElement("div")
-            task.textContent=text;
+            const textSpan = document.createElement("span");
+textSpan.textContent = text;
+task.appendChild(textSpan);
                 const btn=document.createElement("button")
                 btn.textContent = "completed";
+                const dbtn=document.createElement("button")
+                dbtn.textContent = "delete";
+                const ebtn=document.createElement("button")
+                ebtn.textContent = "edit";
 
                 btn.addEventListener("click" , function () {
                     task.classList.toggle("completed");
@@ -37,7 +43,37 @@ adda.addEventListener("click",function () {
                         add_task_container.prepend(task)
                     }
                 });
+                dbtn.addEventListener("click" , function () {
+                    task.remove();
+                });
+                ebtn.addEventListener("click" , function() {
+                    const oldTextspan=task.querySelector("span")
+                    const input=document.createElement("input")
+                    input.type="text"
+                    input.value=oldTextspan.textContent;
+                    task.replaceChild(input,oldTextspan)
+                    input.focus();
+                    input.addEventListener("keypress", function (e) {
+
+        if (e.key === "Enter") {
+
+            const newText = input.value.trim();
+
+            if (newText === "") return;
+
+            // replace input with updated text
+
+            const newtextspan = document.createElement("span");
+            newtextspan.textContent=newText;
+            task.replaceChild(newtextspan,input)
+
+        }
+
+    });
+                });
+                task.appendChild(ebtn);
                 task.appendChild(btn);
+                task.appendChild(dbtn);
             add_task_container.prepend(task);
             input_box.innerHTML="";
         }
